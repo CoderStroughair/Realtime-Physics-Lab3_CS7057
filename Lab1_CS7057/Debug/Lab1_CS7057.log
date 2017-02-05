@@ -43,11 +43,10 @@ b:\physics\lab3_cs7057\lab1_cs7057\particle.h(53): warning C4244: 'argument': co
 b:\physics\lab3_cs7057\lab1_cs7057\particle.h(239): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
 b:\physics\lab3_cs7057\lab1_cs7057\particle.h(300): warning C4305: 'initializing': truncation from 'double' to 'float'
 b:\physics\lab3_cs7057\lab1_cs7057\particle.h(305): warning C4305: 'argument': truncation from 'double' to 'float'
-b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(113): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
-b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(156): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(160): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(331): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
-b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(337): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(358): warning C4305: 'argument': truncation from 'double' to 'float'
+b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(50): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(62): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
+b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(131): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(137): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+b:\physics\lab3_cs7057\lab1_cs7057\main_mine.cpp(158): warning C4305: 'argument': truncation from 'double' to 'float'
   Lab1_CS7057.vcxproj -> B:\Physics\Lab3_CS7057\Debug\Lab3.exe
   Lab1_CS7057.vcxproj -> B:\Physics\Lab3_CS7057\Debug\Lab3.pdb (Full PDB)

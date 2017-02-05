@@ -729,9 +729,9 @@ GLuint Shader::CompileShader(char* vertex, char* fragment){
 
 void drawObject(GLuint shaderID, mat4 view, mat4 proj, mat4 model, vec3 light, vec3 Ls, vec3 La, vec3 Ld, vec3 Ks, vec3 Ka, vec3 Kd, float exp, Camera cam, Mesh mesh, float coneAngle, vec3 coneDirection, GLenum mode);
 void drawCubeMap(GLuint shaderID, GLuint textureID, mat4 view, mat4 proj, mat4 model, vec3 Ld, vec3 La, Camera cam, Mesh skybox, GLenum mode);
-void drawLine(GLuint shaderID, mat4 view, mat4 proj, vec3 origin, vec3 destination, vec3 colour);
-void drawTriangle(GLuint shaderID, mat4 view, mat4 proj, vec3 v1, vec3 v2, vec3 v3, vec3 colour);
-void drawPoint(GLuint shaderID, mat4 view, mat4 proj, vec3 point, vec3 colour);
+void drawLine(GLuint shaderID, mat4 model, mat4 proj, vec3 origin, vec3 destination, vec3 colour);
+void drawTriangle(GLuint shaderID, mat4 model, mat4 proj, vec3 v1, vec3 v2, vec3 v3, vec3 colour);
+void drawPoint(GLuint shaderID, mat4 model, mat4 proj, vec3 point, vec3 colour);
 
 
 /*----------------------------------------------------------------------------
@@ -801,7 +801,7 @@ void drawCubeMap(GLuint shaderID, GLuint textureID, mat4 view, mat4 proj, mat4 m
 	glDepthMask(GL_TRUE);
 }
 
-void drawLine(GLuint shaderID, mat4 view, mat4 proj, vec3 origin, vec3 destination, vec3 colour)
+void drawLine(GLuint shaderID, mat4 model, mat4 proj, vec3 origin, vec3 destination, vec3 colour)
 {
 	GLfloat points[] = 
 	{
@@ -822,10 +822,11 @@ void drawLine(GLuint shaderID, mat4 view, mat4 proj, vec3 origin, vec3 destinati
 	glUseProgram(shaderID);
 	glBindVertexArray(vao);
 	glUniform3fv(glGetUniformLocation(shaderID, "colour"), 1, colour.v);
+	glUniformMatrix4fv(glGetUniformLocation(shaderID, "model"), 1, GL_FALSE, model.m);
 	glDrawArrays(GL_LINES, 0, 2);
 }
 
-void drawTriangle(GLuint shaderID, mat4 view, mat4 proj, vec3 v1, vec3 v2, vec3 v3, vec3 colour)
+void drawTriangle(GLuint shaderID, mat4 model, mat4 proj, vec3 v1, vec3 v2, vec3 v3, vec3 colour)
 {
 	GLfloat points[] = 
 	{
@@ -847,10 +848,11 @@ void drawTriangle(GLuint shaderID, mat4 view, mat4 proj, vec3 v1, vec3 v2, vec3 
 	glUseProgram(shaderID);
 	glBindVertexArray(vao);
 	glUniform3fv(glGetUniformLocation(shaderID, "colour"), 1, colour.v);
+	glUniformMatrix4fv(glGetUniformLocation(shaderID, "model"), 1, GL_FALSE, model.m);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
-void drawPoint(GLuint shaderID, mat4 view, mat4 proj, vec3 point, vec3 colour)
+void drawPoint(GLuint shaderID, mat4 model, mat4 proj, vec3 point, vec3 colour)
 {
 	GLfloat p[] =
 	{
@@ -870,6 +872,7 @@ void drawPoint(GLuint shaderID, mat4 view, mat4 proj, vec3 point, vec3 colour)
 	glUseProgram(shaderID);
 	glBindVertexArray(vao);
 	glUniform3fv(glGetUniformLocation(shaderID, "colour"), 1, colour.v);
+	glUniformMatrix4fv(glGetUniformLocation(shaderID, "model"), 1, GL_FALSE, model.m);
 	glDrawArrays(GL_POINTS, 0, 1);
 }
 

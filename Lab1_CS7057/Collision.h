@@ -3,7 +3,9 @@
 
 vec3 getClosestPointTriangle(vec3 triangle[], vec3 p0);
 vec3 getClosestPointLine(vec3 line[], vec3 p0);
+vec3 getClosestPointPlane(vec3 normal, vec3 p1, vec3 p0);
 float getDistance(vec3 v0, vec3 v1);
+void getClosestTriangleTriangle(vec3 first[], vec3 second[], vec3 &point1, vec3 &point2);
 
 vec3 getClosestPointTriangle(vec3 triangle[], vec3 p0)
 {
@@ -53,12 +55,17 @@ vec3 getClosestPointTriangle(vec3 triangle[], vec3 p0)
 	}
 
 	//It must be the Face Region
-	return p0;
+	return getClosestPointPlane(cross(p2, p1), p1, p0);
 }
 vec3 getClosestPointLine(vec3 line[], vec3 p0)
 {
 	vec3 u = line[1] - line[0];
 	return line[0] + normalise(u)*(dot(p0 - line[0], normalise(u)));
+}
+vec3 getClosestPointPlane(vec3 normal, vec3 p1, vec3 p0)
+{
+	normal = normalise(normal);
+	return (p0 - normal*dot((p0 - p1), normal));
 }
 float getDistance(vec3 v0, vec3 v1)
 {
@@ -67,3 +74,10 @@ float getDistance(vec3 v0, vec3 v1)
 	float z_sq = (v0.v[2] - v1.v[2]) * (v0.v[2] - v1.v[2]);
 	return sqrt(x_sq + y_sq + z_sq);
 }
+
+void getClosestTriangleTriangle(vec3 first[], vec3 second[], vec3 &point1, vec3 &point2)
+{
+
+}
+
+
