@@ -171,6 +171,8 @@ void drawloop(mat4 view, mat4 proj, GLuint framebuffer)
 
 	drawLine(simpleShaderID, identity_mat4(), identity_mat4(), mouseLocation, closestPoint, PURPLE);
 	
+	//Check whether the mouse is within the triangle face
+
 	if (closestPoint == mouseLocation)
 		drawTriangle(simpleShaderID, identity_mat4(), identity_mat4(), triangle[0], triangle[1], triangle[2], PURPLE);
 	else
@@ -179,6 +181,8 @@ void drawloop(mat4 view, mat4 proj, GLuint framebuffer)
 	vec3 v12 = normalise(triangle[0] - triangle[1]);
 	vec3 v23 = normalise(triangle[1] - triangle[2]);
 	vec3 v31 = normalise(triangle[2] - triangle[0]);
+
+	//First, check that the closest point isn't a vertice, then check whether its on an edge
 
 	if (closestPoint != triangle[0] && closestPoint != triangle[1] && closestPoint != triangle[2] && closestPoint != mouseLocation)
 	{
